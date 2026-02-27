@@ -12,7 +12,10 @@ const NewsItem = ({ post }) => {
         </div>
       </div>
       <h1 className="text-left text-4xl">{post.title}</h1>
-      <p className="pt-2 text-left">{post.content}</p>
+      <p
+        className="pt-2 text-left"
+        dangerouslySetInnerHTML={{ __html: post.content }}
+      />
     </li>
   );
 };
