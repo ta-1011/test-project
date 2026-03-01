@@ -2,7 +2,7 @@ import React from "react";
 import NewsItem from "./NewsItem";
 import { posts } from "./data/posts";
 
-const NewsList = () => {
+const NewsIndex = () => {
   return (
     <ul>
       {posts.map((post) => (
@@ -12,4 +12,4 @@ const NewsList = () => {
   );
 };
 
-export default NewsList;
+export default NewsIndex;
