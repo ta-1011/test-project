@@ -4,11 +4,13 @@ import { posts } from "./data/posts";
 
 const NewsIndex = () => {
   return (
-    <ul>
-      {posts.map((post) => (
-        <NewsItem post={post} key={post.id} />
-      ))}
-    </ul>
+    <div className="mt-8">
+      <ul>
+        {posts.map((post) => (
+          <NewsItem post={post} key={post.id} />
+        ))}
+      </ul>
+    </div>
   );
 };
 
