@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router";
+import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 
 const Header = () => {
@@ -7,14 +7,14 @@ const Header = () => {
     <header className={`${styles.header}`}>
       <ul className={`flex justify-between`}>
         <li>
-          <NavLink className={`${styles.header_link}`} to="/">
+          <Link className={`${styles.header_link}`} to="/">
             Blog
-          </NavLink>
+          </Link>
         </li>
         <li>
-          <NavLink className={`${styles.header_link}`} to="/contact">
+          <Link className={`${styles.header_link}`} to="/contact">
             お問い合わせ
-          </NavLink>
+          </Link>
         </li>
       </ul>
     </header>
