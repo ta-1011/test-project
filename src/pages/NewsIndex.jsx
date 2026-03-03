@@ -1,6 +1,6 @@
 import React from "react";
 import NewsItem from "./NewsItem";
-import { posts } from "./data/posts";
+import { posts } from "../data/posts";
 
 const NewsIndex = () => {
   return (

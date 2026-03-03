@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import { posts } from "./data/posts";
+import { posts } from "../data/posts";
 
 const NewsDetail = () => {
   const { id } = useParams();

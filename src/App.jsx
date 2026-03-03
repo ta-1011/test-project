@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router";
 import BaseLayout from "./layouts/BaseLayout";
-import NewsIndex from "./NewsIndex";
-import NewsDetail from "./NewsDetail";
+import NewsIndex from "./pages/NewsIndex";
+import NewsDetail from "./pages/NewsDetail";
 
 const App = () => {
   return (
