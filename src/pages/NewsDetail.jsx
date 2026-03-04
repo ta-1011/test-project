@@ -1,13 +1,35 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { posts } from "./data/posts";
+import { API_BASE_URL } from "../constants";
 
 const NewsDetail = () => {
   const { id } = useParams();
+  const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const post = posts.find((p) => {
-    return p.id === Number(id); //data内のidは、文字列でなくナンバーなので、ただの「id」だけでは×
-  });
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const res = await fetch(`${API_BASE_URL}/posts/${id}`);
+        const { post } = await res.json(); //詳細ページは
+        setPost(post);
+      } catch (error) {
+        setError("記事の取得に失敗しました。");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPost();
+  }, []);
+
+  if (loading) {
+    return <p>記事を読み込み中です。</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   if (!post) {
     return (

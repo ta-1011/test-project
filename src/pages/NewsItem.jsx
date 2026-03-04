@@ -13,9 +13,9 @@ const NewsItem = ({ post }) => {
             })}
           </div>
         </div>
-        <h1 className="text-left text-4xl">{post.title}</h1>
+        <h2 className="text-left text-2xl">{post.title}</h2>
         <p
-          className="pt-2 text-left"
+          className="pt-4 text-left"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
       </Link>
