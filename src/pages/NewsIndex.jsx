@@ -9,20 +9,19 @@ const NewsIndex = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const fetchPost = async () => {
-    try {
-      const res = await fetch(`${API_BASE_URL}/posts`);
-      const { posts } = await res.json();
-      setPosts(posts);
-    } catch (error) {
-      setError("記事の取得に失敗しました。");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
-    fetchPost();
+    const fetchPosts = async () => {
+      try {
+        const res = await fetch(`${API_BASE_URL}/posts`);
+        const { posts } = await res.json();
+        setPosts(posts);
+      } catch (error) {
+        setError("記事の取得に失敗しました。");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPosts();
   }, []);
 
   if (loading) {
@@ -33,7 +32,7 @@ const NewsIndex = () => {
     return <p>{error}</p>;
   }
 
-  if (!posts) {
+  if (posts.length === 0) {
     return (
       <>
         <p className="mt-8">記事が見つかりませんでした。</p>

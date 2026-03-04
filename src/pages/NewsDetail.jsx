@@ -8,19 +8,18 @@ const NewsDetail = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const fetchPost = async () => {
-    try {
-      const res = await fetch(`${API_BASE_URL}/posts/${id}`);
-      const { post } = await res.json(); //詳細ページは
-      setPost(post);
-    } catch (error) {
-      setError("記事の取得に失敗しました。");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const res = await fetch(`${API_BASE_URL}/posts/${id}`);
+        const { post } = await res.json(); //詳細ページは
+        setPost(post);
+      } catch (error) {
+        setError("記事の取得に失敗しました。");
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchPost();
   }, []);
 
