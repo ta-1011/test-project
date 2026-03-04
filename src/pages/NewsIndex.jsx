@@ -1,6 +1,6 @@
 import React from "react";
 import NewsItem from "./NewsItem";
-import { posts } from "../data/posts";
+import { API_BASE_URL } from "../constants";
 
 const NewsIndex = () => {
   return (

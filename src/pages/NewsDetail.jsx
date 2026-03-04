@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-
-const API_BASE_URL =
-  "https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev";
+import { API_BASE_URL } from "../constants";
 
 const NewsDetail = () => {
   const { id } = useParams();
@@ -27,7 +25,7 @@ const NewsDetail = () => {
   }, []);
 
   if (loading) {
-    return <p>ローディング中です</p>;
+    return <p>記事を読み込み中です。</p>;
   }
 
   if (error) {
