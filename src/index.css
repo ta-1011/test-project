@@ -26,9 +26,7 @@ a:hover {
 
 main {
   margin: 0;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
 }
 
 h1 {

@@ -45,7 +45,7 @@ const NewsDetail = () => {
   }
 
   return (
-    <div>
+    <div className="max-w-200 mx-auto py-10">
       <div className="mt-8">
         <img src={post.thumbnailUrl} alt="" />
       </div>
