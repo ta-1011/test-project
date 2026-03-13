@@ -11,7 +11,7 @@ const Input = (props) => {
           return props.onChange(e.target.value);
         }}
         className="p-4 border border-gray-300 w-full"
-        required
+        disabled={props.disabled}
       />
     </>
   );

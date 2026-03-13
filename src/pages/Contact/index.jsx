@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Input from "../../components/ui/Input";
 import TextArea from "../../components/ui/TextArea";
 import ErrorMessage from "../../components/ui/ErrorMessage";
+import { API_BASE_URL } from "../../constants";
 
 const Contact = () => {
   // 入力テキストの表示
@@ -13,6 +14,9 @@ const Contact = () => {
   const [nameErrorMessage, setNameErrorMessage] = useState();
   const [emailErrorMessage, setEmailErrorMessage] = useState();
   const [messageErrorMessage, setMessageErrorMessage] = useState();
+
+  //送信中の管理
+  const [isSubmit, setIsSubmit] = useState(false);
 
   // バリデーションの定義
   const valid = () => {
@@ -52,17 +56,26 @@ const Contact = () => {
     return isValid;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!valid()) {
       return;
     }
 
     try {
-      console.log("送信ok");
+      await fetch(`${API_BASE_URL}/contacts`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, message }),
+      });
+      alert("送信しました。");
+      handleClear();
     } catch (error) {
-      console.log(error);
+      alert("送信に失敗しました。");
     } finally {
+      setIsSubmit(false);
     }
   };
 
@@ -103,6 +116,7 @@ const Contact = () => {
               onChange={(value) => {
                 return setEmail(value);
               }}
+              disabled={isSubmit}
             />
             <ErrorMessage message={emailErrorMessage} />
           </div>
@@ -118,6 +132,7 @@ const Contact = () => {
               onChange={(value) => {
                 return setMessage(value);
               }}
+              disabled={isSubmit}
             />
             <ErrorMessage message={messageErrorMessage} />
           </div>
