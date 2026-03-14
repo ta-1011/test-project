@@ -60,6 +60,8 @@ const Contact = () => {
     e.preventDefault();
     if (!valid()) return;
 
+    setIsSubmit(true);
+
     try {
       await fetch(`${API_BASE_URL}/contacts`, {
         method: "POST",
@@ -79,7 +81,9 @@ const Contact = () => {
 
   // フォーム内容のクリア
   const handleClear = () => {
-    return setName(""), setEmail(""), setMessage("");
+    setName("");
+    setEmail("");
+    setMessage("");
   };
 
   return (
@@ -87,7 +91,7 @@ const Contact = () => {
       <h1>お問い合わせフォーム</h1>
       <form onSubmit={handleSubmit} noValidate>
         <div className="mt-8 w-full flex justify-between">
-          <label htmlFor="" className="w-60">
+          <label htmlFor="name" className="w-60">
             お名前
           </label>
           <div className="w-full">
@@ -96,12 +100,13 @@ const Contact = () => {
               value={name}
               id="name"
               onChange={(value) => setName(value)}
+              disabled={isSubmit}
             />
             <ErrorMessage message={nameErrorMessage} />
           </div>
         </div>
         <div className="mt-8 w-full flex justify-between">
-          <label htmlFor="" className="w-60">
+          <label htmlFor="email" className="w-60">
             メールアドレス
           </label>
           <div className="w-full">
@@ -116,7 +121,7 @@ const Contact = () => {
           </div>
         </div>
         <div className="mt-8 w-full flex justify-between">
-          <label htmlFor="" className="w-60">
+          <label htmlFor="message" className="w-60">
             お問い合わせ内容
           </label>
           <div className="w-full">
@@ -130,10 +135,10 @@ const Contact = () => {
           </div>
         </div>
         <div className="flex justify-center mt-8">
-          <button type="submit" className="mr-4">
+          <button type="submit" className="mr-4" disabled={isSubmit}>
             送信
           </button>
-          <button type="button" onClick={handleClear}>
+          <button type="button" onClick={handleClear} disabled={isSubmit}>
             クリア
           </button>
         </div>
