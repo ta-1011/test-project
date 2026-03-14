@@ -46,7 +46,7 @@ const NewsIndex = () => {
   }
 
   return (
-    <div className="mt-8">
+    <div className="max-w-200 mx-auto py-10">
       <h1 className="text-left text-4xl">記事一覧</h1>
       <ul className="mt-4">
         {posts.map((post) => (
