@@ -58,9 +58,7 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!valid()) {
-      return;
-    }
+    if (!valid()) return;
 
     try {
       await fetch(`${API_BASE_URL}/contacts`, {
@@ -97,9 +95,7 @@ const Contact = () => {
               type="text"
               value={name}
               id="name"
-              onChange={(value) => {
-                return setName(value);
-              }}
+              onChange={(value) => setName(value)}
             />
             <ErrorMessage message={nameErrorMessage} />
           </div>
@@ -113,9 +109,7 @@ const Contact = () => {
               type="email"
               value={email}
               id="email"
-              onChange={(value) => {
-                return setEmail(value);
-              }}
+              onChange={(value) => setEmail(value)}
               disabled={isSubmit}
             />
             <ErrorMessage message={emailErrorMessage} />
@@ -129,9 +123,7 @@ const Contact = () => {
             <TextArea
               value={message}
               id="message"
-              onChange={(value) => {
-                return setMessage(value);
-              }}
+              onChange={(value) => setMessage(value)}
               disabled={isSubmit}
             />
             <ErrorMessage message={messageErrorMessage} />
