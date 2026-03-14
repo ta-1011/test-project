@@ -103,6 +103,7 @@ const Contact = () => {
               disabled={isSubmit}
             />
             <ErrorMessage message={nameErrorMessage} />
+            {/* {nameErrorMessage && <p>{nameErrorMessage}</p>} */}
           </div>
         </div>
         <div className="mt-8 w-full flex justify-between">
