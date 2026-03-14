@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import BaseLayout from "./layouts/BaseLayout";
 import NewsIndex from "./pages/NewsIndex";
 import NewsDetail from "./pages/NewsDetail";
